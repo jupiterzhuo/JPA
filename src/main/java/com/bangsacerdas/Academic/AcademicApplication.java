@@ -1,6 +1,7 @@
 package com.bangsacerdas.Academic;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -55,11 +56,14 @@ public class AcademicApplication implements CommandLineRunner {
 		contacts = contactRepository.findAll();
 		List<Student> students = studentRepository.findAll();
 		
-		System.out.println("===================Contact:==================");
-		contacts.stream().forEach(System.out::println);
-         
-        System.out.println("===================Student:==================");
-        students.forEach(System.out::println);
+		for (Student student : students) {
+			System.out.println(student.getName());
+		}
+//		System.out.println("===================Contact:==================");
+//		contacts.stream().forEach(System.out::println);
+//         
+//        System.out.println("===================Student:==================");
+//        students.forEach(System.out::println);
 	}
 
 }
