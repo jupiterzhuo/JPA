@@ -6,7 +6,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +33,20 @@ public class StudentController {
 	@PostMapping
 	public RequestStudent addStudent(@RequestBody RequestStudent newStudent) {
 		RequestStudent response = studentServices.addStudent(newStudent);
+		return response;
+	}
+	
+	
+	@GetMapping("/{studentId}")
+	public ResponseStudent listStudentById(@PathVariable int studentId){
+		return studentServices.listStudenyById(studentId);
+	}
+	
+	
+	@PutMapping("/{studentId}")
+	public RequestStudent editStudent(@RequestBody RequestStudent updateStudent,
+			@PathVariable int studentId) {
+		RequestStudent response = studentServices.editStudent(updateStudent, studentId);
 		return response;
 	}
 	
